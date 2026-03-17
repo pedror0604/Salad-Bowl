@@ -60,14 +60,14 @@ const MENU_DRINKS = [
     name: "Chá Gelado",
     desc: "Feito por nós",
     price: 9.0,
-    img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: "d2",
     name: "Chá Gelado com Limão",
     desc: "Feito por nós",
     price: 9.0,
-    img: "https://images.unsplash.com/photo-1499638673689-79a0b5115d87?auto=format&fit=crop&w=500&q=80",
+    img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=500&q=80",
   },
   {
     id: "d3",
