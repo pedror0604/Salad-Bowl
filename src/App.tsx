@@ -73,14 +73,14 @@ const MENU_DRINKS = [
     name: "Água",
     desc: "Sem gás",
     price: 5.0,
-    img: "https://images.unsplash.com/photo-1548839140-29a749e1abc4?auto=format&fit=crop&w=500&q=80",
+    img: "/Agua.png",
   },
   {
     id: "d4",
     name: "Água com Gás",
     desc: "Com gás",
     price: 5.0,
-    img: "https://images.unsplash.com/photo-1553177595-4de2bb0842b9?auto=format&fit=crop&w=500&q=80",
+    img: "/Aguagás.jpg",
   },
   {
     id: "d5",
