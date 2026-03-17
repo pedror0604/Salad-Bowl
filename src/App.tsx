@@ -166,7 +166,7 @@ const CUSTOM_BOWL_OPTIONS = {
     "Frango Grelhado",
     "Frango Desfiado",
     "Atum",
-    "Ovo Cozido (2 un)",
+    "Ovo Cozido",
     "Tofu Temperado",
     "Sem Proteína",
   ],
