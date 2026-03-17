@@ -200,6 +200,9 @@ export default function App() {
   const [currentView, setCurrentView] = useState("home");
   const [cart, setCart] = useState([]);
   const [observacao, setObservacao] = useState("");
+  const [customerName, setCustomerName] = useState("");
+  const [address, setAddress] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("Pix");
 
   const addToCart = (item) => {
     setCart([...cart, { ...item, cartId: Math.random().toString() }]);
