@@ -297,11 +297,10 @@ export default function App() {
             <h3 className="font-bold text-lg mb-4 text-white">CEO</h3>
             <div className="flex flex-col gap-2">
               <div className="flex items-baseline gap-2 flex-wrap">
-              <span className="text-sm font-medium text-white">Pedro Rocha</span>
-              <span className="text-[10px] opacity-60 uppercase tracking-wider border-l border-white/20 pl-2 leading-none">
-                Fundador & Idealizador
-              </span>
-            </div>
+                <span className="text-sm font-medium text-white">Pedro Rocha</span>
+                <span className="text-[10px] opacity-60 uppercase tracking-wider border-l border-white/20 pl-2 leading-none">
+                  Fundador & Idealizador
+                </span>
               </div>
               <a 
                 href="https://instagram.com/pedro.pr10" 
