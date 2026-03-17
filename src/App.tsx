@@ -94,7 +94,7 @@ const MENU_DRINKS = [
     name: "Coca-Cola Zero Lata",
     desc: "350ml",
     price: 7.0,
-    img: "/cocazero.png",
+    img: "/cocazero.webp",
   },
   {
     id: "d7",
@@ -108,7 +108,7 @@ const MENU_DRINKS = [
     name: "Guaraná Zero Lata",
     desc: "350ml",
     price: 7.0,
-    img: "/guaranazero.webp",
+    img: "/guaranazero.png",
   },
   {
     id: "sob1",
