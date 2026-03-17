@@ -108,7 +108,7 @@ const MENU_DRINKS = [
     name: "Guaraná Zero Lata",
     desc: "350ml",
     price: 7.0,
-    img: "/guaranazero.png",
+    img: "/guaranazero.webp",
   },
   {
     id: "sob1",
