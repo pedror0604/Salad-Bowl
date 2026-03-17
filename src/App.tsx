@@ -412,7 +412,7 @@ function HomeView({ addToCart, goToCustom }) {
               <img
                 src={item.img}
                 alt={item.name}
-                className={`w-16 h-16 rounded-lg object-cover ${item.name.includes("Zero") ? "scale-140" : ""}`}
+                className={`w-16 h-16 rounded-lg object-cover ${item.name.includes("Zero") ? "scale-145" : ""}`}
               />
               <div className="flex-1">
                 <h4 className="font-bold text-gray-800 text-sm">{item.name}</h4>
