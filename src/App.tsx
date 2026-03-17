@@ -293,14 +293,14 @@ export default function App() {
               </div>
             </div>
             <div className="flex flex-col items-center md:items-start">
-              <h3 className="font-bold text-lg mb-4 text-white">Localização</h3>
-              <div className="flex items-center gap-2 text-sm opacity-80">
-                <MapPin className="w-4 h-4" /> Centro da Cidade
-              </div>
-              <p className="text-xs mt-2 text-orange-300">
-                Entregamos num raio de 5km!
-              </p>
+            <h3 className="font-bold text-lg mb-4 text-white">CEO</h3>
+            <div className="flex items-center gap-2 text-sm opacity-80">
+              Pedro Rocha
             </div>
+            <p className="text-xs mt-2 text-orange-300">
+              Fundador & Idealizador
+            </p>
+          </div>
           </div>
         </footer>
       )}
