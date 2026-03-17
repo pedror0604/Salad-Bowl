@@ -502,7 +502,7 @@ function CustomBowlView({ setCart, cart, goBack }) {
       case 2:
         return selectedBase !== "";
       case 3:
-        return selectedProtein !== "";
+        return selectedProteins.length > 0;
       case 4:
         return selectedToppings.length > 0;
       case 5:
@@ -532,7 +532,7 @@ function CustomBowlView({ setCart, cart, goBack }) {
       name: `Bowl Personalizado (${selectedSize.name.split(" ")[0]})`,
       type: "custom",
       price: currentTotalPrice,
-      desc: `Base: ${selectedBase} | Proteína: ${selectedProtein} | Acomp.: ${toppingsFormattedDesc} | Molho: ${selectedDressing}`,
+      desc: `Base: ${selectedBase} | Proteína: ${selectedProteins.map(p => p.name).join(", ")} | Acomp.: ${toppingsFormattedDesc} | Molho: ${selectedDressing}`,
       img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
     };
 
