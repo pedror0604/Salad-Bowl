@@ -116,21 +116,21 @@ const MENU_DRINKS = [
     name: "Bolo Gelado (Brigadeiro)",
     desc: "Sobremesa",
     price: 6.0,
-    img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80",
+    img: "/brigadeiro.png",
   },
   {
     id: "sob2",
     name: "Bolo Gelado (Côco)",
     desc: "Sobremesa",
     price: 6.0,
-    img: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=500&q=80",
+    img: "/coco.png",
   },
   {
     id: "sob3",
     name: "Bolo Gelado (Ninho)",
     desc: "Sobremesa",
     price: 6.0,
-    img: "https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=500&q=80",
+    img: "/ninho.png",
   },
 ];
 
