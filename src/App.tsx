@@ -665,10 +665,10 @@ function CustomBowlView({ setCart, cart, goBack }) {
             </div>
           )}
 
-          {step === 3 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {CUSTOM_BOWL_OPTIONS.proteins.map((protein) => (
-                <label
+     {step === 3 && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {CUSTOM_BOWL_OPTIONS.proteins.map((protein) => (
+            <label
               key={protein.name}
               className={`flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
                 selectedProteins.some((p) => p.name === protein.name)
@@ -702,8 +702,9 @@ function CustomBowlView({ setCart, cart, goBack }) {
                 </span>
               )}
             </label>
-          )}
-
+          ))}
+        </div>
+      )}
           {step === 4 && (
             <>
               <div className="flex items-center justify-between text-sm bg-blue-50 border border-blue-100 text-blue-800 p-4 rounded-xl mb-6 shadow-sm">
