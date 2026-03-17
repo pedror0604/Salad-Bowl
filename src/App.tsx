@@ -666,44 +666,88 @@ function CustomBowlView({ setCart, cart, goBack }) {
           )}
 
      {step === 3 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {CUSTOM_BOWL_OPTIONS.proteins.map((protein) => (
-            <label
-              key={protein.name}
-              className={`flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                selectedProteins.some((p) => p.name === protein.name)
-                  ? "border-orange-500 bg-orange-50"
-                  : "border-gray-200 hover:border-orange-300"
-              }`}
-            >
-              <input
-                type="checkbox"
-                className="hidden"
-                checked={selectedProteins.some((p) => p.name === protein.name)}
-                onChange={() => handleProteinToggle(protein)}
-              />
-              <span
-                className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 ${
-                  selectedProteins.some((p) => p.name === protein.name)
-                    ? "border-orange-500 bg-orange-500"
-                    : "border-gray-300"
-                }`}
-              >
-                {selectedProteins.some((p) => p.name === protein.name) && (
-                  <CheckCircle2 className="w-4 h-4 text-white" />
-                )}
-              </span>
-              <span className="font-medium text-gray-700">
-                {protein.name}
-              </span>
-              {protein.price > 0 && (
-                <span className="ml-auto text-xs text-gray-500">
-                  + R$ {protein.price.toFixed(2).replace(".", ",")}
+        <>
+          <div className="flex items-center justify-between text-sm bg-blue-50 border border-blue-100 text-blue-800 p-4 rounded-xl mb-6 shadow-sm">
+            <div className="flex items-center">
+              <Info className="w-5 h-5 mr-3 text-blue-500" />
+              <div>
+                <span className="font-semibold block">
+                  A 1ª proteína é grátis!
                 </span>
-              )}
-            </label>
-          ))}
-        </div>
+                <span className="opacity-80">
+                  Já escolheu {selectedProteins.length}.
+                </span>
+              </div>
+            </div>
+            {getExtraProteinsCost() > 0 && (
+              <div className="text-right">
+                <span className="block text-xs">Custo extra:</span>
+                <span className="font-bold text-orange-600">
+                  + R$ {getExtraProteinsCost().toFixed(2).replace(".", ",")}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {CUSTOM_BOWL_OPTIONS.proteins.map((protein) => {
+              const isSelected = selectedProteins.some((p) => p.name === protein.name);
+              const isExtraCharge =
+                isSelected &&
+                selectedProteins.findIndex((p) => p.name === protein.name) >= FREE_PROTEINS;
+
+              return (
+                <label
+                  key={protein.name}
+                  className={`flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                    isSelected
+                      ? "border-orange-500 bg-orange-50"
+                      : "border-gray-200 hover:border-orange-300"
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    className="hidden"
+                    checked={isSelected}
+                    onChange={() => handleProteinToggle(protein)}
+                  />
+                  <span
+                    className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 ${
+                      isSelected
+                        ? "border-orange-500 bg-orange-500"
+                        : "border-gray-300"
+                    }`}
+                  >
+                    {isSelected && (
+                      <CheckCircle2 className="w-4 h-4 text-white" />
+                    )}
+                  </span>
+                  <span className="font-medium text-gray-700">
+                    {protein.name}
+                  </span>
+                  
+                  <div className="ml-auto flex items-center">
+                    {!isSelected && protein.price > 0 && (
+                      <span className="text-xs text-gray-400">
+                        + R$ {protein.price.toFixed(2).replace(".", ",")}
+                      </span>
+                    )}
+                    {isSelected && !isExtraCharge && protein.price > 0 && (
+                      <span className="text-xs font-bold text-green-600 bg-green-100 px-2 py-0.5 rounded-full">
+                        Grátis
+                      </span>
+                    )}
+                    {isExtraCharge && protein.price > 0 && (
+                      <span className="text-xs font-bold text-orange-600 bg-orange-100 px-2 py-0.5 rounded-full">
+                        + R$ {protein.price.toFixed(2).replace(".", ",")}
+                      </span>
+                    )}
+                  </div>
+                </label>
+              );
+            })}
+          </div>
+        </>
       )}
           {step === 4 && (
             <>
