@@ -162,14 +162,14 @@ const CUSTOM_BOWL_OPTIONS = {
     "Quinoa",
     "Macarrão Integral",
   ],
-  proteins: [
-    "Frango Grelhado",
-    "Frango Desfiado",
-    "Atum",
-    "Ovo Cozido",
-    "Tofu Temperado",
-    "Sem Proteína",
-  ],
+ proteins: [
+      { name: "Frango Grelhado", price: 6.0 },
+      { name: "Frango Desfiado", price: 6.0 },
+      { name: "Atum", price: 8.0 },
+      { name: "Ovo Cozido", price: 4.0 },
+      { name: "Tofu Temperado", price: 7.0 },
+      { name: "Sem Proteína", price: 0 },
+    ],
   toppings: [
     { name: "Tomate Cereja", price: 2.5 },
     { name: "Cenoura Ralada", price: 1.5 },
@@ -458,12 +458,12 @@ function CustomBowlView({ setCart, cart, goBack }) {
   const [step, setStep] = useState(1);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedBase, setSelectedBase] = useState("");
-  const [selectedProtein, setSelectedProtein] = useState("");
+  const [selectedProteins, setSelectedProteins] = useState([]);
   const [selectedToppings, setSelectedToppings] = useState([]);
   const [selectedDressing, setSelectedDressing] = useState("");
 
   const FREE_TOPPINGS = 4;
-
+  const FREE_PROTEINS = 1;
   const handleToppingToggle = (toppingObj) => {
     if (selectedToppings.some((t) => t.name === toppingObj.name)) {
       setSelectedToppings(
@@ -473,16 +473,28 @@ function CustomBowlView({ setCart, cart, goBack }) {
       setSelectedToppings([...selectedToppings, toppingObj]);
     }
   };
+  const handleProteinToggle = (proteinObj) => {
+    if (selectedProteins.some((p) => p.name === proteinObj.name)) {
+      setSelectedProteins(
+        selectedProteins.filter((p) => p.name !== proteinObj.name)
+      );
+    } else {
+      setSelectedProteins([...selectedProteins, proteinObj]);
+    }
+  };
 
   const getExtraToppingsCost = () => {
     if (selectedToppings.length <= FREE_TOPPINGS) return 0;
     const extraToppings = selectedToppings.slice(FREE_TOPPINGS);
     return extraToppings.reduce((total, topping) => total + topping.price, 0);
   };
-
+  const getExtraProteinsCost = () => {
+    if (selectedProteins.length <= 1) return 0;
+    const extraProteins = selectedProteins.slice(1);
+    return extraProteins.reduce((total, protein) => total + protein.price, 0);
+  };
   const currentTotalPrice =
-    (selectedSize ? selectedSize.price : 0) + getExtraToppingsCost();
-
+    (selectedSize ? selectedSize.price : 0) + getExtraToppingsCost() + getExtraProteinsCost();
   const isStepComplete = () => {
     switch (step) {
       case 1:
@@ -657,35 +669,39 @@ function CustomBowlView({ setCart, cart, goBack }) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {CUSTOM_BOWL_OPTIONS.proteins.map((protein) => (
                 <label
-                  key={protein}
-                  className={`flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
-                    selectedProtein === protein
-                      ? "border-orange-500 bg-orange-50"
-                      : "border-gray-200 hover:border-orange-300"
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="protein"
-                    className="hidden"
-                    checked={selectedProtein === protein}
-                    onChange={() => setSelectedProtein(protein)}
-                  />
-                  <span
-                    className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 ${
-                      selectedProtein === protein
-                        ? "border-orange-500 bg-orange-500"
-                        : "border-gray-300"
-                    }`}
-                  >
-                    {selectedProtein === protein && (
-                      <CheckCircle2 className="w-4 h-4 text-white" />
-                    )}
-                  </span>
-                  <span className="font-medium text-gray-700">{protein}</span>
-                </label>
-              ))}
-            </div>
+              key={protein.name}
+              className={`flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                selectedProteins.some((p) => p.name === protein.name)
+                  ? "border-orange-500 bg-orange-50"
+                  : "border-gray-200 hover:border-orange-300"
+              }`}
+            >
+              <input
+                type="checkbox"
+                className="hidden"
+                checked={selectedProteins.some((p) => p.name === protein.name)}
+                onChange={() => handleProteinToggle(protein)}
+              />
+              <span
+                className={`w-5 h-5 rounded-full border flex items-center justify-center mr-3 ${
+                  selectedProteins.some((p) => p.name === protein.name)
+                    ? "border-orange-500 bg-orange-500"
+                    : "border-gray-300"
+                }`}
+              >
+                {selectedProteins.some((p) => p.name === protein.name) && (
+                  <CheckCircle2 className="w-4 h-4 text-white" />
+                )}
+              </span>
+              <span className="font-medium text-gray-700">
+                {protein.name}
+              </span>
+              {protein.price > 0 && (
+                <span className="ml-auto text-xs text-gray-500">
+                  + R$ {protein.price.toFixed(2).replace(".", ",")}
+                </span>
+              )}
+            </label>
           )}
 
           {step === 4 && (
