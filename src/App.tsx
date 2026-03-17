@@ -256,11 +256,19 @@ export default function App() {
           <CustomBowlView setCart={setCart} cart={cart} goBack={goToHome} />
         )}
         {currentView === "cart" && (
-          <CartView
+         <CartView
             cart={cart}
             removeFromCart={removeFromCart}
             total={totalCart}
             goBack={goToHome}
+            customerName={customerName}
+            setCustomerName={setCustomerName}
+            address={address}
+            setAddress={setAddress}
+            paymentMethod={paymentMethod}
+            setPaymentMethod={setPaymentMethod}
+            observacao={observacao}
+            setObservacao={setObservacao}
           />
         )}
       </main>
@@ -814,11 +822,7 @@ function CustomBowlView({ setCart, cart, goBack }) {
 // ==========================================
 // CARRINHO E CHECKOUT
 // ==========================================
-function CartView({ cart, removeFromCart, total, goBack }) {
-  const [customerName, setCustomerName] = useState("");
-  const [address, setAddress] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("Pix");
-
+function CartView({ cart, removeFromCart, total, goBack, customerName, setCustomerName, address, setAddress, paymentMethod, setPaymentMethod, observacao, setObservacao }) {
   // Variável para armazenar qual nota o cliente vai entregar
   const [billNote, setBillNote] = useState("");
 
