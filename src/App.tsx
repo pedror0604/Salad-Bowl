@@ -14,6 +14,7 @@ import {
   Clock,
   MapPin,
   Banknote,
+  Instagram,
 } from "lucide-react";
 
 // --- DADOS DO CARDÁPIO ---
@@ -292,12 +293,21 @@ export default function App() {
                 <Clock className="w-4 h-4" /> Domingo: Fechado
               </div>
             </div>
-            <div className="flex flex-col items-center md:items-start">
+           <div className="flex flex-col items-center md:items-start">
             <h3 className="font-bold text-lg mb-4 text-white">CEO</h3>
-            <div className="flex items-center gap-2 text-sm opacity-80">
-              Pedro Rocha
+            <div className="flex flex-col gap-2">
+              <span className="text-sm opacity-80">Pedro Rocha</span>
+              <a 
+                href="https://instagram.com/pedro.pr10" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-orange-300 hover:text-orange-200 transition-colors"
+              >
+                <Instagram className="w-4 h-4" />
+                @pedro.pr10
+              </a>
             </div>
-            <p className="text-xs mt-2 text-orange-300">
+            <p className="text-xs mt-2 opacity-60">
               Fundador & Idealizador
             </p>
           </div>
