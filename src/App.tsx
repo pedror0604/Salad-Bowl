@@ -94,7 +94,7 @@ const MENU_DRINKS = [
     name: "Coca-Cola Zero Lata",
     desc: "350ml",
     price: 7.0,
-    img: "/cocazero",
+    img: "/cocazero.png",
   },
   {
     id: "d7",
